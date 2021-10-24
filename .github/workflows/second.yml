@@ -2,9 +2,10 @@ name: Second Workflow
 
 on:
   workflow_run:
-    - First Workflow
-  types:
-    - completed
+    workflows:
+      - First Workflow
+    types:
+      - completed
 
 jobs:
   first:
