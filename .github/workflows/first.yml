@@ -1,0 +1,16 @@
+name: First Workflow
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  first:
+    name: The first job in the first workflow
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is the first step, in the first job of the first workflow"
