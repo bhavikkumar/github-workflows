@@ -17,22 +17,14 @@ jobs:
 
       - run: exit 1
 
-  failure:
-    name: ECR Deployment Failure
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo "ECR workflow failed"
-
   workflow-status:
     if: always()
     name: Echo Workflow Status
     runs-on: ubuntu-latest
     needs:
       - success
-      - failure
     steps:
       - name: Workflow Conclusion Action
         uses: technote-space/workflow-conclusion-action@v2.0.1
 
-      - run: echo "${{ env.WORKFLOW_CONCLUSION }}"
+      - run: echo "${{ ${{ github.event.workflow_run.conclusion == 'success' }} && env.WORKFLOW_CONCLUSION }}"
