@@ -1,4 +1,4 @@
-name: Third Workflow
+name: Deployment
 
 on:
   workflow_run:
@@ -6,7 +6,7 @@ on:
       - ECR Repository
       - Service Build
     branches:
-      - main
+      - master
     types:
       - completed
 
