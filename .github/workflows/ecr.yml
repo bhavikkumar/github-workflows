@@ -27,4 +27,4 @@ jobs:
       - name: Workflow Conclusion Action
         uses: technote-space/workflow-conclusion-action@v2.0.1
 
-      - run: echo "${{ github.event.workflow_run.conclusion == 'success' && env.WORKFLOW_CONCLUSION }}"
+      - run: echo "${{ env.WORKFLOW_CONCLUSION }}"
