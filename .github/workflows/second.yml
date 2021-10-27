@@ -8,8 +8,15 @@ on:
       - completed
 
 jobs:
-  first:
-    name: The first job in second workflow
+  success:
+    name: First workflow success
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - run: echo "This is the first step, in the first job of the second workflow"
+      - run: echo "The first workflow completed successfully and run second workflow"
+
+  failure:
+    name: First workflow failed
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
