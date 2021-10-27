@@ -14,3 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Terraform ECR deployment"
+
+  workflow-status:
+    if: always()
+    name: Echo Workflow Status
+    runs-on: ubuntu-latest
+    needs:
+      - first
+    steps:
+      - name: Workflow Conclusion Action
+        uses: technote-space/workflow-conclusion-action@v2.0.1
+
+      - run: echo "${{ env.WORKFLOW_CONCLUSION }}"
