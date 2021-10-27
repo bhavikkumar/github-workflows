@@ -1,0 +1,26 @@
+name: Third Workflow
+
+on:
+  workflow_run:
+    workflows:
+      - ECR Repository
+      - Service Build
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  success:
+    name: Deployment of Service
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo "Deployment Success"
+
+  failure:
+    name: Previous workflows failed
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo "ECR or Build workflow failed"

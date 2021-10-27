@@ -1,4 +1,4 @@
-name: First Workflow
+name: ECR Repository
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   first:
-    name: The first job in the first workflow
+    name: Deploy ECR repository
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: echo "Terraform ECR deployment"

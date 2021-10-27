@@ -1,23 +1,23 @@
-name: Second Workflow
+name: Service Build
 
 on:
   workflow_run:
     workflows:
-      - First Workflow
+      - ECR Repository
     types:
       - completed
 
 jobs:
   success:
-    name: First workflow success
+    name: Test, Build, Push Container
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - run: echo "The first workflow completed successfully and run second workflow"
 
   failure:
-    name: First workflow failed
+    name: ECR Deployment Failure
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
-      - run: echo "The first workflow failed"
+      - run: echo "ECR workflow failed"
