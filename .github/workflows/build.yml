@@ -15,6 +15,8 @@ jobs:
     steps:
       - run: echo "Build success"
 
+      - run: exit 1
+
   workflow-status:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Echo Workflow Status

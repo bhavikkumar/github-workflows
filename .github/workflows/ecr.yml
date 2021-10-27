@@ -15,8 +15,6 @@ jobs:
     steps:
       - run: echo "Terraform ECR deployment"
 
-      - run: exit 1
-
   workflow-status:
     if: always()
     name: Echo Workflow Status
