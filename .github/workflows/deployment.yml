@@ -7,6 +7,8 @@ on:
       - Service Build
     branches:
       - master
+    types:
+      - completed
 
 jobs:
   success:

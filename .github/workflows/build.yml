@@ -4,6 +4,8 @@ on:
   workflow_run:
     workflows:
       - ECR Repository
+    types:
+      - completed
 
 jobs:
   success:
